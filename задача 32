@@ -1,0 +1,47 @@
+#include <fstream>
+#include <string>
+#include <algorithm>
+#include <sstream>
+using namespace std;
+void move_zero(string& number, size_t pos) 
+{
+    if (number[pos] != '0')
+        return;
+    auto no_zero_pos = std::find_if(number.begin() + pos, number.end(), [](char c)
+        {
+            return c != '0';
+        });
+    if (no_zero_pos == number.end())
+        return;
+    std::swap(number[pos], *no_zero_pos);
+}
+int main()
+{
+    ifstream ifst("input.txt");
+    ofstream ofst("output.txt");
+    stringstream sstr;
+    string a, b;
+    int max_a, min_b;
+    ifst >> a >> b;
+    if (a[0] == '-') 
+    {
+        std::sort(a.begin(), a.end(), std::less<char>());
+        move_zero(a, 1);
+    }
+    else 
+    {
+        std::sort(a.begin(), a.end(), std::greater<char>());
+    }
+    if (b[0] == '-') 
+    {
+        std::sort(b.begin() + 1, b.end(), std::greater<char>());
+    }
+    else 
+    {
+        std::sort(b.begin(), b.end(), std::less<char>());
+        move_zero(b, 0);
+    }
+    sstr << a << ' ' << b;
+    sstr >> max_a >> min_b;
+    ofst << max_a - min_b;
+}
