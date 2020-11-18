@@ -1,0 +1,39 @@
+#include <stdio.h>
+ 
+int Max(int a, int b) { if (a > b) return a; else return b; }
+int Min(int a, int b) { if (a < b) return a; else return b; }
+ 
+int max_x, min_x, max_y, min_y;
+int n,m,i,j;
+char ch; 
+ 
+int main ()
+{
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
+ 
+    scanf("%d %d",&n, &m);
+    max_x = -1; max_y = -1;
+    min_x = 101; min_y = 101;
+    for(i = 1; i <= n; ++i)
+        for(j = 1; j <= m; ++j)
+        {
+            scanf("%c",&ch);
+            while(ch != '.' && ch != '*')
+                scanf("%c",&ch);
+            if (ch == '*')
+            {
+                min_x = Min(min_x, i);
+                max_x = Max(max_x, i);
+                min_y = Min(min_y, j);
+                max_y = Max(max_y, j);
+            }
+        }
+    for(i = 1; i <= n; ++i,printf("\n"))
+        for(j = 1; j <= m; ++j)
+            if (min_x <= i && i <= max_x && min_y <= j && j <= max_y)
+                printf("*");
+            else
+                printf(".");
+    return 0;
+}
