@@ -1,10 +1,25 @@
-#include <iostream>
-using namespace std;
-int main()
-{
-    int a, b, c,d;
-    cin >> a >> b >> c;
-    d = max(a, max(b, c));
-    cout <<d;
-    return 0;
-}
+var  x,y,z:word;
+     a,b,c:string;
+procedure r;
+  begin
+    z:=pos(' ',c);
+    a:=copy(c,1,z-1);
+    delete(c,1,z);    
+    z:=length(a);
+  end;
+begin
+  read(c);
+  r;
+  b:=a;
+  y:=z;
+  r;
+  x:=z;
+  z:=length(c);
+  if ((x>y) or (x=y) and (a>b)) and
+     ((x>z) or (x=z) and (a>c)) then
+     b:=a
+    else
+  if (z>y) or (z=y) and (c>b) then
+     b:=c;
+  write(b)
+end.
