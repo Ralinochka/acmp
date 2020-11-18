@@ -1,0 +1,31 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+string f; int i,n,t=0,ob=0,c=0;
+cin>>f;
+n=s.size();
+if ((f[0]>='A')&&(f[0]<='Z')) ob=0;
+else ob=1;
+for (i=0; i<n; i++)
+{
+if (ob!=1)
+{
+if ((s[i]>='A')&&(s[i]<='Z')) 
+{ 
+t=0; c++;
+}
+else 
+{
+t++;
+c=0; 
+}
+if (t>3||c>1) ob=1;
+}
+else i=n;
+}
+if (ob==1||c==1)
+cout<<"No";
+else cout<<"Yes";
+return 0; 
+}
