@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath>
+double eps=0.001;
+using namespace std;
+long double sequence(long double x1)
+{
+    long double i,s,summ;
+    i=0;
+    s=1;
+    do
+    {
+        s*=(-1*(2*i+5))/((3*x1+1)*(i+2));
+        summ+=s;
+        i++;
+    }
+    while (abs(s)>eps);
+    return summ;
+}
+int main()
+{
+    long double x;
+    cin>>x;
+    cout<<sequence(x);
+    return 0;
+}
